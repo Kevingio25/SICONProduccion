@@ -6,10 +6,10 @@
 
     if($request == 1){
         $busqueda = $_POST['busqueda'];
-        $consulta1 = "SELECT * FROM correos_ur WHERE UR like'%".$busqueda."%'";
+        $consulta1 = "SELECT * FROM ct_unidades WHERE UR like'%".$busqueda."%'";
         $resultado1 = mysqli_query($conexion,$consulta1);
         while($row = mysqli_fetch_array($resultado1)){
-            $response[] = array("value"=>utf8_encode($row['UR']),"label"=>utf8_encode($row['descripcion']));
+            $response[] = array("value"=>($row['UR']),"label"=>($row['descripcion']));
         }
  
         echo json_encode($response);

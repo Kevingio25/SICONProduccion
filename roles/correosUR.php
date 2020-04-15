@@ -94,13 +94,13 @@
 									var infEmpleado = eval(data);
 									//document.getElementById("rfc").value = infEmpleado[1] ;
 									document.getElementById("ur").value = infEmpleado[0] ;
-									document.getElementById("correoAd1").value = infEmpleado[2] ;
-									document.getElementById("correoAd2").value = infEmpleado[3] ;
-									document.getElementById("cc1").value = infEmpleado[4] ;
-									document.getElementById("cc2").value = infEmpleado[5] ;
-									document.getElementById("cc3").value = infEmpleado[6] ;
-									document.getElementById("cc4").value = infEmpleado[7] ;
-									document.getElementById("cc5").value = infEmpleado[8] ;
+									document.getElementById("correoAd1").value = infEmpleado[1] ;
+									document.getElementById("correoAd2").value = infEmpleado[2] ;
+									document.getElementById("cc1").value = infEmpleado[3] ;
+									document.getElementById("cc2").value = infEmpleado[4] ;
+									document.getElementById("cc3").value = infEmpleado[5] ;
+									document.getElementById("cc4").value = infEmpleado[6] ;
+									document.getElementById("cc5").value = infEmpleado[7] ;
 
 
 								}
