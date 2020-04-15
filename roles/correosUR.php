@@ -56,7 +56,7 @@
 
 		<script type="text/javascript">
 
-			$(document).ready(function(){
+						$(document).ready(function(){
 				$(document).on('keydown', '.unexp', function(){
 					var id = this.id;
 					var splitid = id.split('_');
@@ -69,9 +69,11 @@
 								dataType: "json",
 								data: {
 									busqueda: request.term,request:1
+
 								},
 								success: function(data){
 									response(data);
+									
 								}
 							});
 						},
@@ -79,37 +81,36 @@
 							$(this).val(ui.item.label);
 							var buscarid = ui.item.value;
 							console.log(buscarid);
-
 							//alert(buscarid);
 							$.ajax({
-								url: 'resultados_correos.php',
+								url: "resultados_correos.php",
 								type: 'post',
 								data: {
-
 									buscarid:buscarid,request:2
 
 								},
-								dataType: 'json',
+								success: function(data){
+									
+									var infEmpleado = eval(data);
+									//document.getElementById("rfc").value = infEmpleado[1] ;
+									document.getElementById("ur").value = infEmpleado[0] ;
+									document.getElementById("correoAd1").value = infEmpleado[2] ;
+									document.getElementById("correoAd2").value = infEmpleado[3] ;
+									document.getElementById("cc1").value = infEmpleado[4] ;
+									document.getElementById("cc2").value = infEmpleado[5] ;
+									document.getElementById("cc3").value = infEmpleado[6] ;
+									document.getElementById("cc4").value = infEmpleado[7] ;
+									document.getElementById("cc5").value = infEmpleado[8] ;
 
-								success:function(response){
 
-									var len = response.length;
-									if(len > 0){
-										var idx2 = response[0]['idx'];
-										//var unexp = response[0]['unexp'];
-										console.log(idx2);
-										document.getElementById('correoAd1').value = idx2;
-									}
 								}
-
-
-								
 							});
 							return false;
 						}
 					});
 				});
 			});
+
 
 		/*	
 $(document).ready(function(){
@@ -174,7 +175,7 @@ $(document).ready(function(){
 		<?php 
 			include "Controller/configuracion.php";
 			$usuarioSeguir =  $_GET['usuario_rol'];
-			$idMovSeg = $_GET['id_mov'];
+			
 
 			$sqlNombre = "SELECT nombrePersonal FROM usuarios WHERE usuario = '$usuarioSeguir'";
 			$result = mysqli_query($conexion,$sqlNombre);
@@ -220,9 +221,9 @@ $(document).ready(function(){
 	        	</center>
 	        	
 	          <li class=" estilo-color">
-	            <a href= <?php if($id_rol1 == 0){echo ("'./luluConsulta.php?usuario_rol=$usuarioSeguir'"); } elseif ($id_rol1 == 1) {
+	            <a href= <?php if($id_rol1 == 3){echo ("'./CapturistaTostado.php?usuario_rol=$usuarioSeguir'"); } elseif ($id_rol1 == 2) {
 	            	
-	            echo ("'./lulu.php?usuario_rol=$usuarioSeguir'"); }?> ><img src="./img/icbuzon.png" alt="x" height="17" width="20"/>      Bandeja</a>
+	            echo ("'./analista.php?usuario_rol=$usuarioSeguir'"); }?> ><img src="./img/icbuzon.png" alt="x" height="17" width="20"/>      Bandeja</a>
 	          </li>
 	          <li class=" estilo-color">
 	              <a  href= <?php echo ("'./consultaEstado.php?usuario_rol=$usuarioSeguir'");?> ><img src="./img/ic-consulta.png" alt="x" height="17" width="17"/> Consulta</a>
@@ -246,17 +247,7 @@ $(document).ready(function(){
 
 	        </ul>
 	         <br><br><br>
-			        <center>
-			          <li class=" estilo-color">
-		             		<H3> <FONT COLOR=#9f2241 class= 'estilo-colorn'> <?php  echo $rowQna[1];?> </FONT> </H3>	
-			          </li>
-
-			           
-			           <li class=" estilo-color">
-		             	<FONT SIZE=4 COLOR=9f2241 class= 'estilo-colorg'> <I><?php  echo $rowQna[2];?></I> -- <I><?php  echo $rowQna[3];?></I>  </FONT>
-
-			          </li>
-				</center>
+			        
 
 	       <!-- <div class="mb-5">
 						<h3 class="h6 mb-3">Subscribe for newsletter</h3>
@@ -323,10 +314,10 @@ $(document).ready(function(){
       		
       			<div class="col-md-8 col-md-offset-8">
       				
-					 <form enctype="multipart/form-data" id="formDatos" name="captura1" action="" method="POST"> 
+					 <form enctype="multipart/form-data" id="formDatos" name="captura1" action="./Controller/actualizarCorreosUR.php" method="POST"> 
 
 				 		<div class="form-row">
-							<input type="text" class="form-control" id="userName" name="userName" value="<?php echo $usuarioSeguir ?>" style="display:none">
+							<input type="text" class="form-control" id="usuarioSeguir" name="usuarioSeguir" value="<?php echo $usuarioSeguir ?>" style="display:none">
 						</div>
 						<div class="form-row">
 							<input type="text" class="form-control" id="idFom" name="idFom" value="<?php echo $idMovSeg ?>" style="display:none">
@@ -347,43 +338,49 @@ $(document).ready(function(){
 							<div class="form-row">
 							<div class="form-group col-md-12" >
 						       <label class="plantilla-label estilo-colorg" for="correoAd1" >Correo 1 Administrativo:</label>
-						    	<input type="text"  type="text" class="form-control rfcL border border-dark" id="correoAd1" name="correoAd1"  onkeyup="javascript:this.value=this.value.toUpperCase();" placeholder="Ingresa el correo" maxlength="13" value="<?php if(isset($_POST["correoAd1"])){ echo $_POST["correoAd1"];} ?>" required>
+						    	<input type="text"  type="text" class="form-control rfcL border border-dark" id="correoAd1" name="correoAd1" onkeyup="javascript:this.value=this.value.toLowerCase();"  placeholder="Ingresa el correo" maxlength="40" value="<?php if(isset($_POST["correoAd1"])){ echo $_POST["correoAd1"];} ?>" required>
+						      </div>
+						    </div>
+						    <div class="form-row">
+							<div class="form-group col-md-12" >
+						       
+						    	<input type="text"  type="text" class="form-control rfcL border border-dark" id="ur" name="ur" onkeyup="javascript:this.value=this.value.toLowerCase();"  placeholder="Ingresa el correo" maxlength="40" value="<?php if(isset($_POST["ur"])){ echo $_POST["ur"];} ?>" style="display:none" required>
 						      </div>
 						    </div>
 						    <div class="form-row">
 							<div class="form-group col-md-12" >
 						       <label class="plantilla-label estilo-colorg" for="correoAd2" >Correo 2 Administrativo:</label>
-						    	<input type="text"  type="text" class="form-control rfcL border border-dark" id="correoAd2" name="correoAd2"  onkeyup="javascript:this.value=this.value.toUpperCase();" placeholder="Ingresa el correo" maxlength="13" value="" required>
+						    	<input type="text"  type="text" class="form-control rfcL border border-dark" id="correoAd2" name="correoAd2" onkeyup="javascript:this.value=this.value.toLowerCase();" placeholder="Ingresa el correo" maxlength="40" value= "<?php if(isset($_POST["correoAd2"])){ echo $_POST["correoAd2"];} ?>" required>
 						      </div>
 						    </div>
 						    <div class="form-row">
 							<div class="form-group col-md-12" >
 						       <label class="plantilla-label estilo-colorg" for="cc1" >cc1: </label>
-						    	<input type="text"  type="text" class="form-control rfcL border border-dark" id="cc1" name="cc1" onkeyup="javascript:this.value=this.value.toUpperCase();"  placeholder="Ingresa el correo" maxlength="13" value="" required>
+						    	<input type="text"  type="text" class="form-control rfcL border border-dark" id="cc1" name="cc1" onkeyup="javascript:this.value=this.value.toLowerCase();"  placeholder="Ingresa el correo" maxlength="40" value= "<?php if(isset($_POST["cc1"])){ echo $_POST["cc1"];} ?>" >
 						      </div>
 						    </div>
 						    <div class="form-row">
 							<div class="form-group col-md-12" >
 						       <label class="plantilla-label estilo-colorg" for="cc2" >cc2: </label>
-						    	<input type="text"  type="text" class="form-control rfcL border border-dark" id="cc2" name="cc2"  onkeyup="javascript:this.value=this.value.toUpperCase();" placeholder="Ingresa el correo" maxlength="13" value="" required>
+						    	<input type="text"  type="text" class="form-control rfcL border border-dark" id="cc2" name="cc2" onkeyup="javascript:this.value=this.value.toLowerCase();"  placeholder="Ingresa el correo" maxlength="40" value= "<?php if(isset($_POST["cc2"])){ echo $_POST["cc2"];} ?>" >
 						      </div>
 						    </div>
 						    <div class="form-row">
 							<div class="form-group col-md-12" >
 						       <label class="plantilla-label estilo-colorg" for="cc3" >cc3: </label>
-						    	<input type="text"  type="text" class="form-control rfcL border border-dark" id="cc3" name="cc3"  onkeyup="javascript:this.value=this.value.toUpperCase();" placeholder="Ingresa el correo" maxlength="13" value="" required>
+						    	<input type="text"  type="text" class="form-control rfcL border border-dark" id="cc3" name="cc3" onkeyup="javascript:this.value=this.value.toLowerCase();"  placeholder="Ingresa el correo" maxlength="40" value= "<?php if(isset($_POST["cc3"])){ echo $_POST["cc3"];} ?>" >
 						      </div>
 						    </div>
 						   <div class="form-row">
 							<div class="form-group col-md-12" >
 						       <label class="plantilla-label estilo-colorg" for="cc4" >cc4: </label>
-						    	<input type="text"  type="text" class="form-control rfcL border border-dark" id="cc4" name="cc4"  onkeyup="javascript:this.value=this.value.toUpperCase();" placeholder="Ingresa el correo" maxlength="13" value="" required>
+						    	<input type="text"  type="text" class="form-control rfcL border border-dark" id="cc4" name="cc4" onkeyup="javascript:this.value=this.value.toLowerCase();"  placeholder="Ingresa el correo" maxlength="40" value= "<?php if(isset($_POST["cc4"])){ echo $_POST["cc4"];} ?>" >
 						      </div>
 						    </div>
 						    <div class="form-row">
 							<div class="form-group col-md-12" >
 						       <label class="plantilla-label estilo-colorg" for="cc5" >cc5: </label>
-						    	<input type="text"  type="text" class="form-control rfcL border border-dark" id="cc5" name="cc5"  onkeyup="javascript:this.value=this.value.toUpperCase();" placeholder="Ingresa el correo" maxlength="13" value="" required>
+						    	<input type="text"  type="text" class="form-control rfcL border border-dark" id="cc5" name="cc5" onkeyup="javascript:this.value=this.value.toLowerCase();"  placeholder="Ingresa el correo" maxlength="40" value= "<?php if(isset($_POST["cc5"])){ echo $_POST["cc5"];} ?>" >
 						      </div>
 						    </div>
 							
@@ -439,35 +436,12 @@ $(document).ready(function(){
 											        ¿Estas seguro de agregar esta información?
 											      </div>
 									<center>
-						      <div class="form-group col-md-8">
-									<div class="box" >
-
-										<label  class="plantilla-label estilo-colorg" for="laQna">¿A quien será turnado?</label>
-												 
-												<select class="form-control border border-dark custom-select" name="usuar">
-													
-													<?php
-													if (!$conexion->set_charset("utf8")) {//asignamos la codificación comprobando que no falle
-													       die("Error cargando el conjunto de caracteres utf8");
-													}
-
-													$consulta = "SELECT * FROM usuarios WHERE id_rol = 3 OR id_rol = 2";
-													$resultado = mysqli_query($conexion , $consulta);
-													$contador=0;
-
-													while($misdatos = mysqli_fetch_assoc($resultado)){ $contador++;?>
-													<option value="<?php echo $misdatos["usuario"]; ?>"><?php echo $misdatos["nombrePersonal"]; ?></option>
-													<?php }?>          
-												</select>
-										</div>
-										 <br>  
-
-										</div>
+						    
 										</center>
 											      <div class="modal-footer">
 
 											        <button type="button" class="btn btn-secondary" data-dismiss="modal">Regresar</button>
-							        				<input type="submit" class="btn btn-primary" value="Aceptar" onclick="enviarDatos()" name="botonAccion">
+							        				<input type="submit" class="btn btn-primary" value="Aceptar" onclick="" name="botonAccion">
 											      </div>
 											    </div>
 											  </div>

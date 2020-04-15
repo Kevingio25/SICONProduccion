@@ -188,19 +188,22 @@
 		    </div>
 		  </nav>
 		</form>
-		<img class="img-responsive" src="img/img-salud.jpg" height="150" width="354">
 		
-		<center>			
-			
-				<h3 class="estilo-color plantilla-subtitulospr">Sistema de Control de Registro de Formato de Movimiento de Personal (SICON).</h3>
-				<br>
-				<h5 class=" plantilla-subtitulop"> DEPARTAMENTO DE SEGUIMIENTO DE PLANTILLAS OCUPACIONALES - DSPO</h5>
-			<?php
+		<?php
 				include "configuracion.php";
 				$usuarioSeguir =  $_GET['usuario_rol'];
 
 			?>
 
+<br>
+
+	 <a  href= <?php echo ("'./menuPrincipal.php?usuario_rol=$usuarioSeguir'");?>><img class="img-responsive" src="img/ss1.png" height="90" width="280"/></a>
+		<center>			
+			
+				<h3 class="estilo-color plantilla-subtitulospr">Sistema de Control de Registro de Formato de Movimiento de Personal (SICON).</h3>
+				<br>
+				<h5 class=" plantilla-subtitulop"> DEPARTAMENTO DE SEGUIMIENTO DE PLANTILLAS OCUPACIONALES - DSPO</h5>
+			
 
 			<br>
 			
@@ -561,7 +564,7 @@
 				<?php 
 						 		include "configuracion.php";
 							$sql="SELECT id_movimiento, unidad, rfc,fechaOficio 
-									from fomope WHERE color_estado = 'amarillo'";
+									from fomope WHERE color_estado = 'negro1'";
 							$result=mysqli_query($conexion,$sql);
 
 							$totalFilas    =    mysqli_num_rows($result);  
@@ -569,7 +572,7 @@
 									
 									echo('
 										<div class="col-sm-12 ">
-										<div class="p-3 mb-5 bg-warning text-dark">
+										<div class="plantilla-inputv text-dark">
 										    <div class="card-body"><h2>No existen rechazados.</h2></div>
 									</div>
 									</div>');

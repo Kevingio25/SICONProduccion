@@ -333,7 +333,7 @@ $(document).ready(function(){
 	        	<center>
 	        	
 	        	<li class=" estilo-color">
-	            <a ><img src="./img/iclogin.png" alt="x" height="17" width="17"/><?php echo (" $nombreU[0]"); ?></a>
+	            <a  href= <?php echo ("'./menuPrincipal.php?usuario_rol=$usuarioSeguir'");?> ><img src="./img/iclogin.png" alt="x" height="17" width="17"/><?php echo (" $nombreU[0]"); ?></a>
 	          </li>	
 
 	        	</center>
@@ -343,7 +343,7 @@ $(document).ready(function(){
 	            echo ("'./analista.php?usuario_rol=$usuarioSeguir'"); }?> ><img src="./img/icbuzon.png" alt="x" height="17" width="20"/>      Bandeja</a>
 	          </li>
 	          <li class=" estilo-color">
-	              <a><img src="./img/ic-consulta.png" alt="x" height="17" width="17"/> Consulta</a>
+	              <a href= <?php echo ("'./consultaEstado.php?usuario_rol=$usuarioSeguir'");?> ><img src="./img/ic-consulta.png" alt="x" height="17" width="17"/> Consulta</a>
 	          </li>
 	          <li class=" estilo-color">
               <a ><img src="./img/icreport.png" alt="x" height="17" width="17"/> Reporte</a>
@@ -518,9 +518,14 @@ $(document).ready(function(){
 							  </div>
 							</div>
 							
-								<div class="form-group col-md-2">
+							<div class="form-group col-md-2">
 								<label  class="plantilla-label" for="laQna">*QNA: </label>
-									 <input type="text" class="form-control" id="qnaOption" name="qnaOption" value="<?php echo $newQna ?>" readonly >
+									<select class="form-control border border-dark custom-select" id="qnaOption" name="qnaOption" required>
+											<option  value="<?php echo $newQna ?>" ><?php echo $newQna ?> </option>
+											<option  value="<?php echo $newQna+1 ?>" ><?php echo $newQna+1 ?> </option>
+											<option  value="<?php echo $newQna-1 ?>" ><?php echo $newQna-1 ?> </option>
+										         
+									</select>
 							</div>
 
 							<div class="form-group col-md-2">

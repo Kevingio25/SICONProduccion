@@ -47,7 +47,7 @@
 
             if($ROL == 3){
                         //echo '<script language="javascript">alert("Datos correctos/ Puedes dar Alta");</script>';
-                    header('Location:../../roles/capturistaTostado.php?usuario_rol='.urlencode($user));//cambiar
+                    header('Location:../../roles/menuPrincipal.php?usuario_rol='.urlencode($user));
             }
             if($ROL == 4){
                         //echo '<script language="javascript">alert("Datos correctos/ Puedes dar Alta");</script>';

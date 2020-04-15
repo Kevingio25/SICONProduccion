@@ -742,7 +742,7 @@
 									
 									echo('
 										<div class="col-sm-12 ">
-										<div class="p-3 mb-5 bg-warning text-dark">
+										<div class="plantilla-inputv text-dark">
 										    <div class="card-body"><h2>No existen rechazados.</h2></div>
 									</div>
 									</div>');
@@ -855,7 +855,7 @@
 									
 									echo('
 										<div class="col-sm-12 ">
-										<div class="p-3 mb-5 bg-warning text-dark">
+										<div class="plantilla-inputv text-dark">
 										    <div class="card-body"><h2>No existen fomopes en captura de nomina.</h2></div>
 									</div>
 									</div>');
