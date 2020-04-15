@@ -518,9 +518,14 @@ $(document).ready(function(){
 							  </div>
 							</div>
 							
-								<div class="form-group col-md-2">
+							<div class="form-group col-md-2">
 								<label  class="plantilla-label" for="laQna">*QNA: </label>
-									 <input type="text" class="form-control" id="qnaOption" name="qnaOption" value="<?php echo $newQna ?>" readonly >
+									<select class="form-control border border-dark custom-select" id="qnaOption" name="qnaOption" required>
+											<option  value="<?php echo $newQna ?>" ><?php echo $newQna ?> </option>
+											<option  value="<?php echo $newQna+1 ?>" ><?php echo $newQna+1 ?> </option>
+											<option  value="<?php echo $newQna-1 ?>" ><?php echo $newQna-1 ?> </option>
+										         
+									</select>
 							</div>
 
 							<div class="form-group col-md-2">
