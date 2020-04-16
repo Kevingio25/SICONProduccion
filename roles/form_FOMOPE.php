@@ -348,17 +348,8 @@ $(document).ready(function(){
 	          <li class=" estilo-color">
 	              <a href= <?php echo ("'./consultaEstado.php?usuario_rol=$usuarioSeguir'");?> ><img src="./img/ic-consulta.png" alt="x" height="17" width="17"/> Consulta</a>
 	          </li>
-	          <li class=" estilo-color">
-              <a ><img src="./img/icreport.png" alt="x" height="17" width="17"/> Reporte</a>
-	          </li>
+	          
 	          <br>
-	          <br>
-	          <br>
-	          <br>
-	          <br>
-	          <br>
-	          <li class=" estilo-color">
-	              <a class="nav-link" href=  "../LoginMenu/vista/cerrarsesion.php" ><img src="./img/iclogout.png" alt="x" height="17" width="17"/> Cerrar Sesión</a>
 	          </li>
 	        
 	            <br><br><br>
@@ -374,6 +365,13 @@ $(document).ready(function(){
 			          </li>
 				</center>
 
+	          <br>
+	          <br>
+	          <br>
+
+	          <li class=" estilo-color">
+	              <a class="nav-link" href=  "../LoginMenu/vista/cerrarsesion.php" ><img src="./img/iclogout.png" alt="x" height="17" width="17"/> Cerrar Sesión</a>
+	          
 	        </ul>
 
 	       <!-- <div class="mb-5">

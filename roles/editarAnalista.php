@@ -328,24 +328,11 @@
 	          <li class=" estilo-color">
 	              <a href= <?php echo ("'./consultaEstado.php?usuario_rol=$usuarioSeguir'");?>><img src="./img/ic-consulta.png" alt="x" height="17" width="17"/> Consulta</a>
 	          </li>
-	          <li class=" estilo-color">
-              <a href="#"><img src="./img/icreport.png" alt="x" height="17" width="17"/> Reporte</a>
-	          </li>
+	          
 	          <br>
-	          <br>
-	          <br>
-	          <br>
-	          <br>
-	          <br>
-	          <li class=" estilo-color">
-	              <a class="nav-link" href=  "../LoginMenu/vista/cerrarsesion.php" ><img src="./img/iclogout.png" alt="x" height="17" width="17"/> Cerrar Sesión</a>
-	          </li>
-	          </li>
-	          <li class=" estilo-color">
-             
-	          </li>
-	            <br><br><br>
-	            <center>
+	           <br>
+	            <br>
+	          	<center>
 	            	
 	            	 <li class="active estilo-color">
 		             		<H3> <FONT COLOR=#9f2241 class= 'estilo-colorn'> <?php  echo $rowQna[1];?> </FONT> </H3>	
@@ -356,6 +343,19 @@
 			          </li>
 
 	            </center>
+	          <br>
+	          <br>
+	          <br>
+	           <br>
+	          <li class=" estilo-color">
+	              <a class="nav-link" href=  "../LoginMenu/vista/cerrarsesion.php" ><img src="./img/iclogout.png" alt="x" height="17" width="17"/> Cerrar Sesión</a>
+	          </li>
+	          </li>
+	          <li class=" estilo-color">
+             
+	          </li>
+	           
+	            
 			         
 
 
