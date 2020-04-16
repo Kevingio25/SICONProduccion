@@ -431,12 +431,9 @@
       			<div class="col-md-8 col-md-offset-8">
       				<?php
 
- 		 if($diaActual != 0 && $diaActual != 6 && (  strtotime($fechaSistema) >=  strtotime($fehaI) &&  strtotime($fechaSistema) <=  strtotime($fehaF))){
+ 		 if($diaActual != 0 && $diaActual != 6 ){  // && (  strtotime($fechaSistema) >=  strtotime($fehaI) &&  strtotime($fechaSistema) <=  strtotime($fehaF))
+ 		 	
 			//echo $idMovSeg;
-
-	
-			 
-
 		 ?>	
 					 <form enctype="multipart/form-data" id="formDatos" name="captura1" action="" method="POST"> 
 

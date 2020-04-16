@@ -152,19 +152,26 @@
 
 			}
 
-			$(function(){
-		        /*$('#show').click(function(){
-		          $('#button').show();
-		        });*/
-		        $('#descargar').click(function(){
-			      $('#guardarF').hide();
-			      $('#rechazoF').hide();
-		        });
-		      })
-
+			
 			function verBoton(){
-			        var btn_2 = document.getElementById('bandejaEntrada');
-			            btn_2.style.display = 'inline';
+					var a = $("#ofunid").val();
+				    var b = $("#fechaofi").val();
+				    var c = $("#fechareci").val();
+				    var d = $("#codigo").val();
+				    var e = $("#cod2_1").val();
+				    var f = $("#del2").val();
+				    var g = $("#MotivoRechazo").val();
+			  
+				    //var h = $("#TipoEntregaArchivo").val();
+				    
+				    if (a=="" || b=="" || c==""|| d==""|| e==""|| f==""|| g=="") {
+				      		return false;
+				      }else{
+				      	$('#guardarF').hide();
+			      		$('#rechazo').hide();
+				      	var btn_2 = document.getElementById('bandejaEntrada');
+			            	btn_2.style.display = 'inline';
+			       	  }
 			}
 		</script>
 
@@ -416,7 +423,7 @@
       <div id="content" class="p-4 p-md-5 pt-5">
       	<?php
 
-				 if($diaActual != 0 && $diaActual != 6 && (strtotime($fechaSistema) >=  strtotime($fehaI) &&  strtotime($fechaSistema) <=  strtotime($fehaF))){
+				 if($diaActual != 0 && $diaActual != 6 ){  //&& (strtotime($fechaSistema) >=  strtotime($fehaI) &&  strtotime($fechaSistema) <=  strtotime($fehaF))
 
 				 		// echo $fehaF;
 				 		// echo $fechaSistema . " ";
@@ -694,20 +701,19 @@
 						</div>
 						<br>
 						<div class="form-row">
-						<button type="button" name="guardarF" id="guardarF" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal1">
+							<button type="button" name="guardarF" id="guardarF" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal1">
 								Guardar Fomope 
-								</button>
-									<input type="submit" class="btn btn-primary" id="bandejaEntrada" name="accionB" style="display: none;"  value="bandeja principal">
+							</button>
+									
+								<input type="submit" class="btn btn-primary" id="bandejaEntrada" name="accionB" style="display: none;"  value="bandeja principal">
 						</div>
 						<br>
 
 						<div class="form-row">
-							<button type="button" name="rechazoF" id="rechazoF" class="btn btn-danger" data-toggle="modal" data-target="#exampleModalRT" >Rechazo por validacion </button>
-
-
+							<button type="button" name="rechazo" id="rechazo" class="btn btn-danger" data-toggle="modal" data-target="#exampleModalRT" >Rechazo por validacion </button>
 						</div>
 
-							<div class="modal fade" id="exampleModalRT" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+								<div class="modal fade" id="exampleModalRT" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
 							  <div class="modal-dialog" role="document">
 							    <div class="modal-content">
 							      <div class="modal-header">
@@ -721,11 +727,9 @@
 							       
 							      <div class="modal-footer">
 							        <button type="button" class="btn btn-secondary" data-dismiss="modal">REGRESAR</button>
-									<input type="submit" class="btn btn-primary" name="accionB"  value="descargar">
+									<input type="submit" class="btn btn-primary" id="descargar" onclick="verBoton()" name="accionB"  value="descargar">
 							      </div>
-							      <div class="modal-footer">
-									<input type="submit" class="btn btn-danger" name="accionB"  value="bandeja principal">
-							      </div>
+							     
 							    </div>
 							  </div>
 							</div>
@@ -768,22 +772,22 @@
 			</form>
 			<form name="elimin" enctype="multipart/form-data" action="./Controller/eliminarFomope.php" method="POST"> 
 						
-					<button type="button" class="btn btn-danger" data-toggle="modal" data-target="#exampleModal1">
+					<button type="button" class="btn btn-danger" data-toggle="modal" data-target="#exampleModalSup">
 											Eliminar Fomope 
-											</button>
+						</button>
 							  			<br>
 
 							  				<div class="form-row">
-							<input type="text" class="form-control" id="noFomope" name="noFomope" value="<?php echo $noFomope?>" style="display:none">
+						<input type="text" class="form-control" id="noFomope" name="noFomope" value="<?php echo $noFomope?>" style="display:none">
 						</div>
 						<div class="form-row">
 							<input type="text" class="form-control" id="id_rol" name="id_rol" value="<?php echo $noFomope?>" style="display:none">
 						</div>
 						<div class="form-row">
-							<input type="text" class="form-control" id="usuarioSeguir" name="usuarioSeguir" value="<?php echo $usuarioSeguir?>" style="display:none">
+							<input type="text" class="form-control" id="usuarioSeguir" name="usuario" value="<?php echo $usuarioSeguir?>" style="display:none">
 						</div>
 											<!-- Modal -->
-											<div class="modal fade" id="exampleModal1" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+											<div class="modal fade" id="exampleModalSup" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
 											  <div class="modal-dialog" role="document">
 											    <div class="modal-content">
 											      <div class="modal-header">
@@ -800,6 +804,7 @@
 										</center>
 											      <div class="modal-footer">
 
+
 											        <button type="button" class="btn btn-secondary" data-dismiss="modal">Regresar</button>
 							        				<input type="submit" class="btn btn-danger" value="Eliminar" name="accionB">
 											      </div>
@@ -807,7 +812,9 @@
 											  </div>
 											</div>
 
-												</form>
+
+
+		</form>
 
 
 		</center>

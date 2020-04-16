@@ -212,21 +212,28 @@ $(document).ready(function(){
 
 			}
 
-			$(function(){
-		        /*$('#show').click(function(){
-		          $('#button').show();
-		        });*/
-		        $('#descargar').click(function(){
-			      $('#capturaF').hide();
-			      $('#rechazo').hide();
-		        });
-		      })
+			
 
 			function verBoton(){
-			        var btn_2 = document.getElementById('bandejaEntrada');
-			            btn_2.style.display = 'inline';
+					var a = $("#ofunid").val();
+				    var b = $("#fechaofi").val();
+				    var c = $("#fechareci").val();
+				    var d = $("#codigo").val();
+				    var e = $("#cod2_1").val();
+				    var f = $("#del2").val();
+				    var g = $("#MotivoRechazo").val();
+			  
+				    //var h = $("#TipoEntregaArchivo").val();
+				    
+				    if (a=="" || b=="" || c==""|| d==""|| e==""|| f==""|| g=="") {
+				      		return false;
+				      }else{
+				      	$('#capturaF').hide();
+			      		$('#rechazo').hide();
+				      	var btn_2 = document.getElementById('bandejaEntrada');
+			            	btn_2.style.display = 'inline';
+			       	  }
 			}
-
 		</script>
 
 		
@@ -298,13 +305,9 @@ $(document).ready(function(){
 			 		}
 			 		$sqlCerrar = "UPDATE m1ct_fechasnomina SET estadoActual = 'cerrada' WHERE id_qna = '$rowQna[0]'";
 			 		$sqlAbrir = "UPDATE m1ct_fechasnomina SET estadoActual = 'abierta' WHERE id_qna = '$newQna'";
-			 		
 			 		if($resC = mysqli_query($conexion,$sqlCerrar) && $resA = mysqli_query($conexion, $sqlAbrir) ){
-
 			 		}else{
-
 			 			echo "error con la conexion a la BD";
-			 			
 			 		}
 
 			 }else{
@@ -567,6 +570,7 @@ $(document).ready(function(){
 						<input type="date" class="form-control border border-dark" id="fechareci" name="fechareci" placeholder="Fecha de recibido" required>
 						<small name= "alertFechaIngreso" id= "alertFechaIngreso" class="text-danger">
 				        </small>  
+
 					</div>
 					<div class="form-group col-md-4">
 						<label class="plantilla-label" for="codigo">*Código:</label><div class="container">
@@ -589,7 +593,6 @@ $(document).ready(function(){
 						<label class="plantilla-label" for="codmov">*Código de movimiento:</label>
 						<input onkeypress="return pulsar(event)" type="text" class="form-control cod2 border border-dark" id="cod2_1" name="cod2_1" placeholder="Ej. 4550" value="" onkeyup="javascript:this.value=this.value.toUpperCase();" required>
 					</div>
-						
 				</div>
 				<div class="form-row">
 					<div class="form-group col-md-5">
@@ -705,7 +708,7 @@ $(document).ready(function(){
 
 				</div>
 
-							<div class="modal fade" id="exampleModalRT" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+						<div class="modal fade" id="exampleModalRT" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
 							  <div class="modal-dialog" role="document">
 							    <div class="modal-content">
 							      <div class="modal-header">
