@@ -54,7 +54,7 @@
 		        if($resultado3 = mysqli_query($conexion,$sqlEliminar)){
 	        		
 					
-					if($id_rol1 == 2){
+				if($id_rol1 == 2){
  					echo "<script> window.location.href = '../analista.php?usuario_rol=$usuarioSegimiento' </script>";
 				}elseif ($id_rol1 == 3) {
 								

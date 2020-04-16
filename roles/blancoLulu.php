@@ -293,6 +293,8 @@
 			 	//echo "OOOOOLLAA";
 			 	$fehaI = date("d-m-Y", strtotime($rowQna[2])); 
 			 	$fehaF = date("d-m-Y", strtotime($rowQna[3])); 
+			 	$newQna = $rowQna[0];
+
 
 			 }else{
 			 
@@ -444,7 +446,7 @@
 
 		 	<?php
 
- 		if($diaActual != 0 && $diaActual != 6 && (strtotime($fechaSistema) >=  strtotime($fehaI) &&  strtotime($fechaSistema) <=  strtotime($fehaF))){
+ 		if($diaActual != 0 && $diaActual != 6 ){    //&& (strtotime($fechaSistema) >=  strtotime($fehaI) &&  strtotime($fechaSistema) <=  strtotime($fehaF))
 
 				 		// echo $fehaF;
 				 		// echo $fechaSistema . " ";
