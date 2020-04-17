@@ -46,7 +46,7 @@
 				// Read the file
 				$objReader = PHPExcel_IOFactory::createReader($fileType);
 				$objPHPExcel = $objReader->load($fileName);
-				$fecha_recibido =$_POST['fechareci'];
+				$fecha_recibido =$_POST['fechaIngreso'];
 				$motivoR = $_POST['comentarioR'];
 				$idfom = $_POST['idFom'];
 
@@ -63,7 +63,7 @@
 					$rowUni = mysqli_fetch_row($resUni);
 					$objPHPExcel->getActiveSheet()->setCellValue('H11',$fecha_recibido); 
 			        $objPHPExcel->getActiveSheet()->setCellValue('D13', $_POST['cod2_1']); 
-			        $objPHPExcel->getActiveSheet()->setCellValue('D17', $rowUni[0]); 
+			        $objPHPExcel->getActiveSheet()->setCellValue('D17', $_POST['unexp_1']); 
 			        $objPHPExcel->getActiveSheet()->setCellValue('D21', $motivoR); 
 			        $objPHPExcel->getActiveSheet()->setCellValue('B30', $rowUser[4]); 
 				// Write the file
