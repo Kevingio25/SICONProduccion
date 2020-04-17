@@ -102,15 +102,15 @@
 			$fechaEntregaUnidadAdd = "Pendiente";
 		}
 			if($radioAdd_rechazar == "bandeja principal"){
-															$sqlRol = "SELECT id_rol FROM usuarios WHERE usuario = '$usuarioEdito'";
-															$resRol = mysqli_query($conexion,$sqlRol);
-															$datoId = mysqli_fetch_row($resRol);
-																	if($datoId[0] == 0){
-													 					echo "<script> window.location.href = '../luluConsulta.php?usuario_rol=$usuarioEdito' </script>";
-																	}elseif ($datoId[0] == 1) {
-																					
-																	  echo "<script>window.location.href = '../lulu.php?usuario_rol=$usuarioEdito'</script>";
-																	}
+				$sqlRol = "SELECT id_rol FROM usuarios WHERE usuario = '$usuarioEdito'";
+				$resRol = mysqli_query($conexion,$sqlRol);
+				$datoId = mysqli_fetch_row($resRol);
+						if($datoId[0] == 0){
+		 					echo "<script> window.location.href = '../luluConsulta.php?usuario_rol=$usuarioEdito' </script>";
+						}elseif ($datoId[0] == 1) {
+										
+						  echo "<script>window.location.href = '../lulu.php?usuario_rol=$usuarioEdito'</script>";
+						}
 			
 			}else if($radioAdd_rechazar == "Aceptar" AND $idRolActual[0] == 1){
 				$colorAccion = "amarillo";
@@ -180,7 +180,7 @@ if($id_rol == 0 && $unidadC == ''){
 									if($resultU = mysqli_query($conexion,$sqlUser)){
 										$rowRol = mysqli_fetch_row($resultU);
 										if($rowRol[0] == 0){
-
+													generarExcel();
 										 echo "<script> alert('Fomope enviado a revision'); window.location.href = '../luluConsulta.php?usuario_rol=$usuarioEdito'</script>";
 
 										}else if ($rowRol[0] == 1){
