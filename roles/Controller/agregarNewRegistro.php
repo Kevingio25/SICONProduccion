@@ -190,7 +190,6 @@ if($id_rol == 0 && $unidadC == ''){
 										 	echo "<script> alert('Fomope enviado a revision'); window.location.href = '../lulu.php?usuario_rol=$usuarioEdito'</script>";
 
 										}
-										
 
 										/*if($rowRol[0] == 0 && $unidadC == ''){
 
