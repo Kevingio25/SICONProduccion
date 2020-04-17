@@ -46,7 +46,13 @@
 			$sqlNombre = "SELECT nombrePersonal FROM usuarios WHERE usuario = '$usuarioSeguir'";
 			$result = mysqli_query($conexion,$sqlNombre);
 			$nombreU = mysqli_fetch_row($result);
-				
+			$consultaR = " SELECT * FROM usuarios WHERE usuario = '$usuarioSeguir'";
+			 if($resultado3 = mysqli_query($conexion,$consultaR)){
+	        		$row = mysqli_fetch_assoc($resultado3);
+					$id_rol1 = $row['id_rol'];
+
+					
+			}		
 
 			
 		?>
@@ -69,23 +75,44 @@
 		  		<img class="img-responsive" src="img/ss1.png" height="50" width="190">
 	        <ul class="list-unstyled components mb-5">
 	        	<br>
-	        	<center>
+			<center>
 	        		<li class=" estilo-color">
-	            <a ><img src="./img/iclogin.png" alt="x" height="17" width="17"/><?php echo (" $nombreU[0]"); ?></span></a>
+	            <a  href= <?php echo ("'./menuPrincipal.php?usuario_rol=$usuarioSeguir'");?> ><img src="./img/iclogin.png" alt="x" height="17" width="17"/><?php echo (" $nombreU[0]"); ?></a>
 	          </li>
-
 	        	</center>
-	        	
-	          <li class=" estilo-color">
-	            <a href=  <?php echo ("'./lulu.php?usuario_rol=$usuarioSeguir'"); ?> ><img src="./img/icbuzon.png" alt="x" height="17" width="20"/>      Bandeja</a>
+	        	<li class=" estilo-color">
+	            <a href= <?php if($id_rol1 == 0){echo ("'./luluConsulta.php?usuario_rol=$usuarioSeguir'"); }elseif ($id_rol1 == 4) {
+	            	
+	            echo ("'./dario.php?usuario_rol=$usuarioSeguir'"); }elseif ($id_rol1 == 2) {
+	            	
+	            echo ("'./analista.php?usuario_rol=$usuarioSeguir'"); } elseif ($id_rol1 == 1) {
+	            	
+	            echo ("'./lulu.php?usuario_rol=$usuarioSeguir'"); }?> ><img src="./img/icbuzon.png" alt="x" height="17" width="20"/>      Bandeja</a>
 	          </li>
-	           <li class=" estilo-color">
+	        	<?php if($id_rol1 == 2) {
+
+
+	            	
+	           ?>
+	       <?php }else{
+
+	        		
+	            	
+	           ?>
+	            <li class=" estilo-color">
 	            <a href=  <?php echo ("'./FiltroDescargar.php?usuario_rol=$usuarioSeguir'"); ?> ><img src="./img/icreport2.png" alt="x" height="17" width="20"/>      Descarga de Documentos</a>
 	          </li>
+	            <?php 
+	        }
+	           ?>
 	          
+	         
+
 	          <li class=" estilo-color">
-	              <a ><img src="./img/ic-consulta.png" alt="x" height="17" width="17"/> Consulta</a>
+	              <a  href= <?php echo ("'./consultaEstado.php?usuario_rol=$usuarioSeguir'");?> ><img src="./img/ic-consulta.png" alt="x" height="17" width="17"/> Consulta</a>
 	          </li>
+	          
+	         
 	          <br>
 	          <br>
 	          <br>
@@ -95,11 +122,7 @@
 	          <li class=" estilo-color">
 	              <a class="nav-link" href=  "../LoginMenu/vista/cerrarsesion.php" ><img src="./img/iclogout.png" alt="x" height="17" width="17"/> Cerrar Sesión</a>
 	          </li>
-	          
-	          </li>
-	          <li class=" estilo-color">
-             
-	          </li>
+	         
 
 	        </ul>
 
@@ -121,7 +144,10 @@
 
 	      </div>
     	</nav>
+    	
 
+
+    	
     	<nav class="navbar fixed-top navbar-expand-lg navbar-dark bordv plantilla-inputv fixed-top">
 		    <center>
 		    	<div class="container plantilla-inputv " align="center">

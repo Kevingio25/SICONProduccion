@@ -75,8 +75,6 @@
 
 		 ?>
 	 <br>
-    	<br>
-    	<br>
 
 		<div class="wrapper d-flex align-items-stretch">
 			<nav id="sidebar" class=" bordv">
@@ -104,11 +102,12 @@
 	              <a  href= <?php echo ("'./consultaEstado.php?usuario_rol=$usuarioSeguir'");?> ><img src="./img/ic-consulta.png" alt="x" height="17" width="17"/> Consulta</a>
 	          </li>
 	          <li class=" estilo-color">
-	              <a  href= <?php echo ("'./correosUR.php?usuario_rol=$usuarioSeguir'");?> ><img src="./img/icreport2.png" alt="x" height="17" width="17"/> Correos</a>
+	            <a href=  <?php echo ("'./generarReporte.php?usuario_rol=$usuarioSeguir'"); ?> ><img src="./img/icreport.png" alt="x" height="17" width="20"/>Generar Reporte</a>
 	          </li>
 	          <li class=" estilo-color">
-              <a ><img src="./img/icreport.png" alt="x" height="17" width="17"/> Reporte</a>
+	              <a  href= <?php echo ("'./correosUR.php?usuario_rol=$usuarioSeguir'");?> ><img src="./img/icreport2.png" alt="x" height="17" width="17"/> Correos</a>
 	          </li>
+	           
 	          <br>
 	          <br>
 	          <br>
@@ -144,12 +143,88 @@
 	      </div>
     	</nav>
     	<?php 
+		}elseif($nombreU[1] == 0 || $nombreU[1] == 1 || $nombreU[1] == 4){
+
+
+ 			?>
+ <br>
+
+
+		<div class="wrapper d-flex align-items-stretch">
+			<nav id="sidebar" class=" bordv">
+				<div class="custom-menu">
+					<button type="button" id="sidebarCollapse" class="btn btn-outline-secondary">
+	          <i class="fa fa-bars"></i>
+	          <br>
+	          <span class="sr-only">Menú</span>
+	        </button>
+        </div>
+				<div class="p-4 ">
+
+		  		<img class="img-responsive" src="img/ss1.png" height="50" width="190">
+	        <ul class="list-unstyled components mb-5">
+	        	<br>
+	        	<center>
+	        	<li class=" estilo-color">
+	            <a ><img src="./img/iclogin.png" alt="x" height="17" width="17"/><?php echo (" $nombreU[0]"); ?></span></a>
+	          </li>
+	      </center>
+	          <li class=" estilo-color">
+	            <a href=  <?php echo ("'./Controller/consultaRoles.php?usuarioSeguir=$usuarioSeguir''"); ?> ><img src="./img/icbuzon.png" alt="x" height="17" width="20"/>      Bandeja</a>
+	          </li>
+	           <li class=" estilo-color">
+	            <a href=  <?php echo ("'./FiltroDescargar.php?usuario_rol=$usuarioSeguir'"); ?> ><img src="./img/icreport2.png" alt="x" height="17" width="20"/>      Descarga de Documentos</a>
+	          </li>
+	          <li class=" estilo-color">
+	            <a href=  <?php echo ("'./generarReporte.php?usuario_rol=$usuarioSeguir'"); ?> ><img src="./img/icreport.png" alt="x" height="17" width="20"/>Generar Reporte</a>
+	          </li>
+	          <li class=" estilo-color">
+	              <a href= <?php echo ("'./consultaEstado.php?usuario_rol=$usuarioSeguir'");?>><img src="./img/ic-consulta.png" alt="x" height="17" width="17"/> Consulta</a>
+	          </li>
+	          <br>
+	          <br>
+	          <br>
+	          <br>
+	          <br>
+	          <br>
+	          <li class=" estilo-color">
+	              <a class="nav-link" href=  "../LoginMenu/vista/cerrarsesion.php" ><img src="./img/iclogout.png" alt="x" height="17" width="17"/> Cerrar Sesión</a>
+	          </li>
+	          
+	          </li>
+	          <li class=" estilo-color">
+             
+	          </li>
+
+	        </ul>
+
+	       <!-- <div class="mb-5">
+						<h3 class="h6 mb-3">Subscribe for newsletter</h3>
+						<form action="#" class="subscribe-form">
+	            <div class="form-group d-flex">
+	            	<div class="icon"><span class="icon-paper-plane"></span></div>
+	              <input type="text" class="form-control" placeholder="Enter Email Address">
+	            </div>
+	          </form>
+					</div>-->
+
+	        <!--<div class="footer">
+	        	<p>Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0.
+						  Copyright &copy;<script>document.write(new Date().getFullYear());</script> All rights reserved | This template is made with <i class="icon-heart" aria-hidden="true"></i> by <a href="https://colorlib.com" target="_blank">Colorlib.com</a>
+						  Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0.</p>
+	        </div>-->
+
+	      </div>
+    	</nav>
+
+
+			<?php 
+
 		}else{ 
 
 		 ?>
 	 <br>
-    	<br>
-    	<br>
+
 
 		<div class="wrapper d-flex align-items-stretch">
 			<nav id="sidebar" class=" bordv">
@@ -176,9 +251,11 @@
 	          <li class=" estilo-color">
 	              <a  href= <?php echo ("'./consultaEstado.php?usuario_rol=$usuarioSeguir'");?> ><img src="./img/ic-consulta.png" alt="x" height="17" width="17"/> Consulta</a>
 	          </li>
-	          <li class=" estilo-color">
-              <a ><img src="./img/icreport.png" alt="x" height="17" width="17"/> Reporte</a>
-	          </li>
+	         
+	          <br>
+	          <br>
+	          <br>
+	          <br>
 	          <br>
 	          <br>
 	          <br>

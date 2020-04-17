@@ -197,8 +197,6 @@ $(document).ready(function(){
 		?>
 	
 				 <br>
-    	<br>
-    	<br>
 
 		<div class="wrapper d-flex align-items-stretch">
 <nav id="sidebar" class=" bordv">
