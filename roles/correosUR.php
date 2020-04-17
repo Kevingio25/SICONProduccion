@@ -336,49 +336,49 @@ $(document).ready(function(){
 							<div class="form-row">
 							<div class="form-group col-md-12" >
 						       <label class="plantilla-label estilo-colorg" for="correoAd1" >Correo 1 Administrativo:</label>
-						    	<input type="text"  type="text" class="form-control rfcL border border-dark" id="correoAd1" name="correoAd1" onkeyup="javascript:this.value=this.value.toLowerCase();"  placeholder="Ingresa el correo" maxlength="40" value="<?php if(isset($_POST["correoAd1"])){ echo $_POST["correoAd1"];} ?>" required>
+						    	<input type="Email" class="form-control rfcL border border-dark" id="correoAd1" name="correoAd1" onkeyup="javascript:this.value=this.value.toLowerCase();"  placeholder="Ingresa el correo" maxlength="40" value="<?php if(isset($_POST["correoAd1"])){ echo $_POST["correoAd1"];} ?>" required>
 						      </div>
 						    </div>
 						    <div class="form-row">
 							<div class="form-group col-md-12" >
 						       
-						    	<input type="text"  type="text" class="form-control rfcL border border-dark" id="ur" name="ur" onkeyup="javascript:this.value=this.value.toLowerCase();"  placeholder="Ingresa el correo" maxlength="40" value="<?php if(isset($_POST["ur"])){ echo $_POST["ur"];} ?>" style="display:none" required>
+						    	<input type="text" class="form-control rfcL border border-dark" id="ur" name="ur" onkeyup="javascript:this.value=this.value.toLowerCase();"  placeholder="Ingresa el correo" maxlength="40" value="<?php if(isset($_POST["ur"])){ echo $_POST["ur"];} ?>" style="display:none" required>
 						      </div>
 						    </div>
 						    <div class="form-row">
 							<div class="form-group col-md-12" >
 						       <label class="plantilla-label estilo-colorg" for="correoAd2" >Correo 2 Administrativo:</label>
-						    	<input type="text"  type="text" class="form-control rfcL border border-dark" id="correoAd2" name="correoAd2" onkeyup="javascript:this.value=this.value.toLowerCase();" placeholder="Ingresa el correo" maxlength="40" value= "<?php if(isset($_POST["correoAd2"])){ echo $_POST["correoAd2"];} ?>" required>
+						    	<input type="Email" class="form-control rfcL border border-dark" id="correoAd2" name="correoAd2" onkeyup="javascript:this.value=this.value.toLowerCase();" placeholder="Ingresa el correo" maxlength="40" value= "<?php if(isset($_POST["correoAd2"])){ echo $_POST["correoAd2"];} ?>" required>
 						      </div>
 						    </div>
 						    <div class="form-row">
 							<div class="form-group col-md-12" >
 						       <label class="plantilla-label estilo-colorg" for="cc1" >cc1: </label>
-						    	<input type="text"  type="text" class="form-control rfcL border border-dark" id="cc1" name="cc1" onkeyup="javascript:this.value=this.value.toLowerCase();"  placeholder="Ingresa el correo" maxlength="40" value= "<?php if(isset($_POST["cc1"])){ echo $_POST["cc1"];} ?>" >
+						    	<input type="Email" class="form-control rfcL border border-dark" id="cc1" name="cc1" onkeyup="javascript:this.value=this.value.toLowerCase();"  placeholder="Ingresa el correo" maxlength="40" value= "<?php if(isset($_POST["cc1"])){ echo $_POST["cc1"];} ?>" >
 						      </div>
 						    </div>
 						    <div class="form-row">
 							<div class="form-group col-md-12" >
 						       <label class="plantilla-label estilo-colorg" for="cc2" >cc2: </label>
-						    	<input type="text"  type="text" class="form-control rfcL border border-dark" id="cc2" name="cc2" onkeyup="javascript:this.value=this.value.toLowerCase();"  placeholder="Ingresa el correo" maxlength="40" value= "<?php if(isset($_POST["cc2"])){ echo $_POST["cc2"];} ?>" >
+						    	<input type="Email" class="form-control rfcL border border-dark" id="cc2" name="cc2" onkeyup="javascript:this.value=this.value.toLowerCase();"  placeholder="Ingresa el correo" maxlength="40" value= "<?php if(isset($_POST["cc2"])){ echo $_POST["cc2"];} ?>" >
 						      </div>
 						    </div>
 						    <div class="form-row">
 							<div class="form-group col-md-12" >
 						       <label class="plantilla-label estilo-colorg" for="cc3" >cc3: </label>
-						    	<input type="text"  type="text" class="form-control rfcL border border-dark" id="cc3" name="cc3" onkeyup="javascript:this.value=this.value.toLowerCase();"  placeholder="Ingresa el correo" maxlength="40" value= "<?php if(isset($_POST["cc3"])){ echo $_POST["cc3"];} ?>" >
+						    	<input type="Email" class="form-control rfcL border border-dark" id="cc3" name="cc3" onkeyup="javascript:this.value=this.value.toLowerCase();"  placeholder="Ingresa el correo" maxlength="40" value= "<?php if(isset($_POST["cc3"])){ echo $_POST["cc3"];} ?>" >
 						      </div>
 						    </div>
 						   <div class="form-row">
 							<div class="form-group col-md-12" >
 						       <label class="plantilla-label estilo-colorg" for="cc4" >cc4: </label>
-						    	<input type="text"  type="text" class="form-control rfcL border border-dark" id="cc4" name="cc4" onkeyup="javascript:this.value=this.value.toLowerCase();"  placeholder="Ingresa el correo" maxlength="40" value= "<?php if(isset($_POST["cc4"])){ echo $_POST["cc4"];} ?>" >
+						    	<input type="Email" class="form-control rfcL border border-dark" id="cc4" name="cc4" onkeyup="javascript:this.value=this.value.toLowerCase();"  placeholder="Ingresa el correo" maxlength="40" value= "<?php if(isset($_POST["cc4"])){ echo $_POST["cc4"];} ?>" >
 						      </div>
 						    </div>
 						    <div class="form-row">
 							<div class="form-group col-md-12" >
 						       <label class="plantilla-label estilo-colorg" for="cc5" >cc5: </label>
-						    	<input type="text"  type="text" class="form-control rfcL border border-dark" id="cc5" name="cc5" onkeyup="javascript:this.value=this.value.toLowerCase();"  placeholder="Ingresa el correo" maxlength="40" value= "<?php if(isset($_POST["cc5"])){ echo $_POST["cc5"];} ?>" >
+						    	<input type="Email" class="form-control rfcL border border-dark" id="cc5" name="cc5" onkeyup="javascript:this.value=this.value.toLowerCase();"  placeholder="Ingresa el correo" maxlength="40" value= "<?php if(isset($_POST["cc5"])){ echo $_POST["cc5"];} ?>" >
 						      </div>
 						    </div>
 							

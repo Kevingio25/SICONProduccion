@@ -33,17 +33,7 @@
 			$hoy = "select CURDATE()";
 		   	$tiempo ="select curTime()";
 
-		   if($radioAdd_rechazar == "bandeja principal"){
-				$sqlRol = "SELECT id_rol FROM usuarios WHERE usuario = '$usuarioEdito'";
-				$resRol = mysqli_query($conexion,$sqlRol);
-				$datoId = mysqli_fetch_row($resRol);
-						if($datoId[0] == 0){
-		 					echo "<script> window.location.href = '../luluConsulta.php?usuario_rol=$usuarioEdito' </script>";
-						}elseif ($datoId[0] == 1) {
-										
-						  echo "<script>window.location.href = '../lulu.php?usuario_rol=$usuarioEdito'</script>";
-						}
-		}
+		   
 
 	function generarExcel(){
 				require "../librerias/conexion_excel.php";
@@ -111,8 +101,18 @@
 			$fechaRLaboralesAdd = "Pendiente";
 			$fechaEntregaUnidadAdd = "Pendiente";
 		}
+			if($radioAdd_rechazar == "bandeja principal"){
+															$sqlRol = "SELECT id_rol FROM usuarios WHERE usuario = '$usuarioEdito'";
+															$resRol = mysqli_query($conexion,$sqlRol);
+															$datoId = mysqli_fetch_row($resRol);
+																	if($datoId[0] == 0){
+													 					echo "<script> window.location.href = '../luluConsulta.php?usuario_rol=$usuarioEdito' </script>";
+																	}elseif ($datoId[0] == 1) {
+																					
+																	  echo "<script>window.location.href = '../lulu.php?usuario_rol=$usuarioEdito'</script>";
+																	}
 			
-			if($radioAdd_rechazar == "Aceptar" AND $idRolActual[0] == 1){
+			}else if($radioAdd_rechazar == "Aceptar" AND $idRolActual[0] == 1){
 				$colorAccion = "amarillo";
 			}else if($radioAdd_rechazar == "Aceptar" AND $idRolActual[0] == 0){
 				$colorAccion = "amarillo0";
@@ -184,10 +184,10 @@ if($id_rol == 0 && $unidadC == ''){
 										 echo "<script> alert('Fomope enviado a revision'); window.location.href = '../luluConsulta.php?usuario_rol=$usuarioEdito'</script>";
 
 										}else if ($rowRol[0] == 1){
+													
+														generarExcel();
 											
-												generarExcel();
-
-										 echo "<script> alert('Fomope enviado a revision'); window.location.href = '../lulu.php?usuario_rol=$usuarioEdito'</script>";
+										 	echo "<script> alert('Fomope enviado a revision'); window.location.href = '../lulu.php?usuario_rol=$usuarioEdito'</script>";
 
 										}
 										

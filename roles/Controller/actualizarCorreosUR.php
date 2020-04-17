@@ -30,17 +30,18 @@
 						$sqlH = "INSERT INTO historial (usuario,fechaMovimiento,horaMovimiento) VALUES ('$rolSegimiento','$row[0]','$row2[0]')";
 										$resultH = mysqli_query($conexion,$sqlH);	
 
-					if($rowRol[0] == '3'){
+					// if($rowRol[0] == '3'){
 
-						$sqlCL = "UPDATE correos_ur SET correoAdmin1 = '$correoAdmin1', correoAdmin2 = '$correoAdmin2', cc1 = '$cc1', cc2 = '$cc2', cc3 = '$cc3',cc4 = '$cc4',cc5 = '$cc5' WHERE UR = '$ur'";
-							mysqli_query($conexion,$sqlCL);
-	               			echo "<script> alert('Correos Actualizados'); window.location.href = '../capturistaTostado.php?usuario_rol=$rolSegimiento'</script>";
+					// 	$sqlCL = "UPDATE correos_ur SET correoAdmin1 = '$correoAdmin1', correoAdmin2 = '$correoAdmin2', cc1 = '$cc1', cc2 = '$cc2', cc3 = '$cc3',cc4 = '$cc4',cc5 = '$cc5' WHERE UR = '$ur'";
+					// 		mysqli_query($conexion,$sqlCL);
+	    //            			echo "<script> alert('Correos Actualizados'); window.location.href = '../capturistaTostado.php?usuario_rol=$rolSegimiento'</script>";
 
 
-					}else if($rowRol[0] == '2'){
+					// }else 
+				if($rowRol[0] == '2'){
 							$sqlCL = "UPDATE correos_ur SET correoAdmin1 = '$correoAdmin1',correoAdmin2 = '$correoAdmin2', cc1 = '$cc1', cc2 = '$cc2', cc3 = '$cc3',cc4 = '$cc4',cc5 = '$cc5' WHERE UR = '$ur'";
 							mysqli_query($conexion,$sqlCL);
-	               			echo "<script> alert('Correos Actualizados'); window.location.href = '../analista.php?usuario_rol=$rolSegimiento'</script>";
+	               			echo "<script> alert('Correos Actualizados'); window.location.href = '../correosUR.php?usuario_rol=$rolSegimiento'</script>";
 
 					}
 

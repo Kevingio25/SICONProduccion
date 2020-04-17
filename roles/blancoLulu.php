@@ -229,13 +229,6 @@
 				document.getElementById("guardarDoc").value = listaEnviar;
 
 			}
-
-			function irAbandeja(){
-				var fun = document.captura1;
-				fun.action = './lulu.php?usuario_rol=';
-				fun.submit();
-			}
-
 	
 		</script>
 
