@@ -16,10 +16,10 @@
 		    $hoy = "select CURDATE()";
 		   	$tiempo ="select curTime()";
 
-			function genearExcel(){
-				require "../generarVolanteRechazo/conexion_excel.php";
+			function generarExcel(){
+				require "../librerias/conexion_excel.php";
 				include "configuracion.php";
-				include '../generarVolanteRechazo/Classes/PHPExcel/IOFactory.php';
+				include '../librerias/Classes/PHPExcel/IOFactory.php';
 
 				$fileType = 'Excel5';
 				$fileName = '../generarVolanteRechazo/rechazoL.xls';
@@ -30,16 +30,23 @@
 				$fecha_recibido =$_POST['fechareci'];
 				$motivoR = $_POST['comentarioR'];
 				$idfom = $_POST['idFom'];
-				//header ('Content-type: text/html; charset=utf-8');
 
+				$usuario = $_POST['userName'];
+					$sqlNombre = "SELECT * from usuarios WHERE usuario = '$usuario'";
+
+					if($resName = mysqli_query($conexion, $sqlNombre)){
+						$rowUser = mysqli_fetch_row($resName);
+
+					}
+				//header ('Content-type: text/html; charset=utf-8');
 				$sqlUnidad = "SELECT unidad , rfc FROM fomope WHERE id_movimiento = '$idfom' ";
 				if($resUni = mysqli_query($conexion, $sqlUnidad)){
 					$rowUni = mysqli_fetch_row($resUni);
-					$objPHPExcel->getActiveSheet()->setCellValue('G7',$fecha_recibido); 
-			        $objPHPExcel->getActiveSheet()->setCellValue('C9', $_POST['cod2_1']); 
-			        $objPHPExcel->getActiveSheet()->setCellValue('C13', $rowUni[0]); 
-			        $objPHPExcel->getActiveSheet()->setCellValue('C18', $motivoR); 
-
+					$objPHPExcel->getActiveSheet()->setCellValue('H11',$fecha_recibido); 
+			        $objPHPExcel->getActiveSheet()->setCellValue('D13', $_POST['cod2_1']); 
+			        $objPHPExcel->getActiveSheet()->setCellValue('D17', $rowUni[0]); 
+			        $objPHPExcel->getActiveSheet()->setCellValue('D21', $motivoR); 
+			        $objPHPExcel->getActiveSheet()->setCellValue('B30', $rowUser[4]); 
 				// Write the file
 			        $objWriter = PHPExcel_IOFactory::createWriter($objPHPExcel, $fileType);
 				        //$objWriter->save("fomopeDESCARGA.xlsx");
@@ -79,7 +86,7 @@
 
 					
 					 if (mysqli_query($conexion,$sql) AND mysqli_query($conexion,$sql2) AND mysqli_query($conexion,$sql3) ) {
-							genearExcel();
+							generarExcel();
 							
 
 					}else {

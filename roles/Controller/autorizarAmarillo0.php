@@ -4,6 +4,8 @@
 		//header ('Content-type: text/html; charset=utf-8');
 		$usuarioEdito = $_POST['userName'];
 		$idFomope = $_POST['idFom'];
+
+		$elBoton = $_POST['accionB'];
 /*
 			$tiempo =  date_default_timezone_set("America/Mexico_City");
 			$tiempo =  time();
@@ -31,6 +33,19 @@
 				echo '<script type="text/javascript">alert("error '. mysqli_error($conexion).'");</script>';
 			}
 
+	if($elBoton == "bandeja principal"){
+		
 
+		$sqlRol = "SELECT id_rol FROM usuarios WHERE usuario = '$usuarioEdito'";
+		$resRol = mysqli_query($conexion,$sqlRol);
+		$datoId = mysqli_fetch_row($resRol);
+				if($datoId[0] == 0){
+ 					echo "<script> window.location.href = './luluConsulta.php?usuario_rol=$usuarioEdito' </script>";
+				}elseif ($datoId[0] == 1) {
+								
+				  echo "<script>window.location.href = './lulu.php?usuario_rol=$usuarioEdito'</script>";
+				}
+	}
+	
 
  ?>

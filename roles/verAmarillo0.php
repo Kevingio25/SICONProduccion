@@ -47,19 +47,23 @@
 		  </style>
 
 		  <script type="text/javascript">
-			  	$(function(){
-			        /*$('#show').click(function(){
-			          $('#button').show();
-			        });*/
-			        $('#descargar').click(function(){
-				      $('#capturaF').hide();
-				      $('#rechazo').hide();
-			        });
-			      })
+			  
 
 				function verBoton(){
-				        var btn_2 = document.getElementById('bandejaEntrada');
-				            btn_2.style.display = 'inline';
+					var rech = $("#obs").val();
+			  
+				    //var h = $("#TipoEntregaArchivo").val();
+				    
+				    if (rech=="") {
+				      		return false;
+				      }else{
+				      	$('#capturaF').hide();
+			      		$('#rechazo').hide();
+				      	var btn_2 = document.getElementById('bandejaEntrada');
+			            	btn_2.style.display = 'inline';
+			       	  }
+
+				      
 				}
 		  </script>
 	

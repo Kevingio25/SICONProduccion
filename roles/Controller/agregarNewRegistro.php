@@ -33,6 +33,71 @@
 			$hoy = "select CURDATE()";
 		   	$tiempo ="select curTime()";
 
+		   if($radioAdd_rechazar == "bandeja principal"){
+				$sqlRol = "SELECT id_rol FROM usuarios WHERE usuario = '$usuarioEdito'";
+				$resRol = mysqli_query($conexion,$sqlRol);
+				$datoId = mysqli_fetch_row($resRol);
+						if($datoId[0] == 0){
+		 					echo "<script> window.location.href = '../luluConsulta.php?usuario_rol=$usuarioEdito' </script>";
+						}elseif ($datoId[0] == 1) {
+										
+						  echo "<script>window.location.href = '../lulu.php?usuario_rol=$usuarioEdito'</script>";
+						}
+		}
+
+	function generarExcel(){
+				require "../librerias/conexion_excel.php";
+				include "configuracion.php";
+				include '../librerias/Classes/PHPExcel/IOFactory.php';
+
+				$fileType = 'Excel5';
+				$fileName = '../generarVolanteRechazo/rechazoL.xls';
+
+				// Read the file
+				$objReader = PHPExcel_IOFactory::createReader($fileType);
+				$objPHPExcel = $objReader->load($fileName);
+				$fecha_recibido =$_POST['fechareci'];
+				$motivoR = $_POST['comentarioR'];
+				$idfom = $_POST['idFom'];
+
+				$usuario = $_POST['userName'];
+					$sqlNombre = "SELECT * from usuarios WHERE usuario = '$usuario'";
+
+					if($resName = mysqli_query($conexion, $sqlNombre)){
+						$rowUser = mysqli_fetch_row($resName);
+
+					}
+				//header ('Content-type: text/html; charset=utf-8');
+				$sqlUnidad = "SELECT unidad , rfc FROM fomope WHERE id_movimiento = '$idfom' ";
+				if($resUni = mysqli_query($conexion, $sqlUnidad)){
+					$rowUni = mysqli_fetch_row($resUni);
+					$objPHPExcel->getActiveSheet()->setCellValue('H11',$fecha_recibido); 
+			        $objPHPExcel->getActiveSheet()->setCellValue('D13', $_POST['cod2_1']); 
+			        $objPHPExcel->getActiveSheet()->setCellValue('D17', $rowUni[0]); 
+			        $objPHPExcel->getActiveSheet()->setCellValue('D21', $motivoR); 
+			        $objPHPExcel->getActiveSheet()->setCellValue('B30', $rowUser[4]); 
+				// Write the file
+			        $objWriter = PHPExcel_IOFactory::createWriter($objPHPExcel, $fileType);
+				        //$objWriter->save("fomopeDESCARGA.xlsx");
+
+
+				    $writer = PHPExcel_IOFactory::createWriter($objPHPExcel, 'Excel2007');
+
+				    header("Content-Type: application/vnd.openxmlformats-officedocument.spreadsheetml.sheet");
+				    header('Content-Disposition: attachment;filename='."volanteRechazo_".$rowUni[1].".xlsx"); //attachment inline
+					header('Cache-Control: max-age=0');
+//Location: ./analista.php?usuario_rol=$usuarioEdito
+		
+
+				    ob_end_clean();
+
+			   		$writer->save('php://output');
+	
+			   		
+			   		exit();
+
+			}
+	}
 
 		$sqlRol = "SELECT id_rol FROM usuarios WHERE usuario = '$usuarioEdito'";
 		if($resultSqlRol = mysqli_query($conexion,$sqlRol)){
@@ -119,6 +184,9 @@ if($id_rol == 0 && $unidadC == ''){
 										 echo "<script> alert('Fomope enviado a revision'); window.location.href = '../luluConsulta.php?usuario_rol=$usuarioEdito'</script>";
 
 										}else if ($rowRol[0] == 1){
+											
+												generarExcel();
+
 										 echo "<script> alert('Fomope enviado a revision'); window.location.href = '../lulu.php?usuario_rol=$usuarioEdito'</script>";
 
 										}
@@ -227,5 +295,7 @@ if($id_rol == 0 && $unidadC == ''){
 				echo '<script type="text/javascript">alert("Error en la conexion");</script>';
 				echo '<script type="text/javascript">alert("error '. mysqli_error($conexion).'");</script>';
 			}
+
+		
 
  ?>
