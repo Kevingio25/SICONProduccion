@@ -1,3 +1,13 @@
+<?php 
+session_start();
+	$usuarioSeguir =  $_GET['usuario_rol'];
+
+	// $cookie_name =  $_GET['usuario_rol'];
+	// 				$cookie_value = "John Doe";
+	// 				setcookie($cookie_name,$cookie_value); // 86400 = 1 day
+				
+?>
+
 
 <html>
 	<head>
@@ -170,10 +180,34 @@
 		    </div>
 		  </nav>
 		</form>
+
+
 			<?php
 				include "configuracion.php";
-				$usuarioSeguir =  $_GET['usuario_rol'];
 
+				// if($_COOKIE["$usuarioSeguir"]!= ""){
+			 //    	echo '<script type="text/javascript">javascript:window.location="../LoginMenu/vista/cerrarsesion.php"</script>';
+			 // 	}
+				$usuarioE =  $_GET['usuario_rol'];
+
+				if (empty($_SESSION['count'])) {
+					
+				   $_SESSION['count'] = 1;
+				} else {
+				   $_SESSION['count']++;
+
+				}
+
+				if($_SESSION['count'] > 1){
+					 	session_destroy();
+		   	  			echo "<script type='text/javascript'>javascript:window.location='./analista.php?usuario_rol=$usuarioE'</script>";
+				}
+					// if(!isset($_COOKIE[$cookie_name])) {
+					//     echo "Cookie named '" . $cookie_name . "' is not set!";
+					// } else {
+					//     echo "Cookie '" . $cookie_name . "' is set!<br>";
+					//     echo "Value is: " . $_COOKIE[$cookie_name];
+					// }
 			?>
 
 <br>
