@@ -232,6 +232,31 @@ $(document).ready(function(){
 			            	btn_2.style.display = 'inline';
 			       	  }
 			}
+<<<<<<< HEAD
+=======
+
+			function verBoton(){
+					var a = $("#ofunid").val();
+				    var b = $("#fechaofi").val();
+				    var c = $("#fechareci").val();
+				    var d = $("#codigo").val();
+				    var e = $("#cod2_1").val();
+				    var f = $("#del2").val();
+				    var g = $("#MotivoRechazo").val();
+			  
+				    //var h = $("#TipoEntregaArchivo").val();
+				    
+				    if (a=="" || b=="" || c==""|| d==""|| e==""|| f==""|| g=="") {
+				      		return false;
+				      }else{
+				      	$('#capturaF').hide();
+			      		//$('#rechazo').hide();
+				      	var btn_2 = document.getElementById('bandejaEntrada');
+			            	btn_2.style.display = 'inline';
+			       	  }
+			}
+		</script>
+>>>>>>> 306c903b27cf2306d2fd15d0559225a64a16b3e3
 
 		</script>
 		
@@ -666,8 +691,13 @@ $(document).ready(function(){
 
 						</div>
 
-						<div class="form-group col-md-6">
+						<div class="form-group col-md-60">
 							<button type="button" name="rechazo" id="rechazo" class="btn btn-danger" data-toggle="modal" data-target="#exampleModalRT" >Rechazo por validacion </button>
+
+
+						</div>
+						<div class="form-group col-md-10">
+							<button type="button" name="genera" id="genera" class="btn btn-primary" data-toggle="modal" data-target="#exampleModalPC" >Reporte profesional de Carrera</button>
 
 
 						</div>
@@ -723,6 +753,30 @@ $(document).ready(function(){
 							      <div class="modal-footer">
 							        <button type="button" class="btn btn-secondary" data-dismiss="modal">REGRESAR</button>
 									<input type="submit" class="btn btn-primary" id="descargar" onclick="verBoton()" name="accionB"  value="descargar">
+							      </div>
+							     
+							    </div>
+							  </div>
+							</div>
+
+				</div>
+
+
+						<div class="modal fade" id="exampleModalPC" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+							  <div class="modal-dialog" role="document">
+							    <div class="modal-content">
+							      <div class="modal-header">
+							        <h5 class="modal-title" id="exampleModalLabel">Reporte Profesional de carrera</h5>
+							        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+							          <span aria-hidden="true">&times;</span>
+							        </button>
+							      </div>
+							      <div class="modal-body">
+							         <textarea class="form-control border border-dark" id="idProfesional" rows = "4" name="idProfesional" placeholder="id Profesional de carrera" required></textarea>
+							       
+							      <div class="modal-footer">
+							        <button type="button" class="btn btn-secondary" data-dismiss="modal">REGRESAR</button>
+									<input type="submit" class="btn btn-primary" id="generar" name="accionB" onclick="eliminarReq()"   value="generar">
 							      </div>
 							     
 							    </div>

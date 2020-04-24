@@ -1,6 +1,11 @@
 
 <?php
 	include "configuracion.php";
+	include './librerias/Classes/PHPWord-master/src/PhpWord/Autoloader.php';
+		\PhpOffice\PhpWord\Autoloader::register();
+
+		use PhpOffice\PhpWord\TemplateProcessor;
+
 		//header ('Content-type: text/html; charset=utf-8');
 		
 		$usuarioSegimiento = $_POST['usuarioSeguir'];
@@ -95,6 +100,43 @@
 
 			}
 	}
+	function generarWord(){
+
+		include "configuracion.php";
+		
+		$templateWord = new TemplateProcessor('./generarWordProfesionalCarrera/DGRHO_DIPSP_2020_MEMORANDUM_126.docx');
+		 
+		$idFomope = $_POST['noFomope'];
+		$fechaA = date("d-m-Y");
+		$sql="SELECT * FROM `fomope` WHERE id_movimiento = '$idFomope' ";
+		$res=mysqli_query($conexion,$sql)or die("problema con la consulta");
+		if($data=mysqli_fetch_array($res)){  
+
+		    $nombre = $data['nombre'];
+		    $apellido_P = $data['apellido_1'];
+		    $apellido_M = $data['apellido_2'];
+		    $unidadO = $data['unidad'];
+		     $idProfesionalC = $data['idProfesionalCarrera'];
+		}  
+
+		// // --- Asignamos valores a la plantilla
+		$templateWord->setValue('nombres',$nombre);
+		$templateWord->setValue('fecha', $fechaA);
+		$templateWord->setValue('apellido1',$apellido_P);
+		$templateWord->setValue('apellido2',$apellido_M);
+		$templateWord->setValue('unidad',$unidadO);
+		$templateWord->setValue('idProfCar',$idProfesionalC);
+
+
+		// // --- Guardamos el documento
+		$templateWord->saveAs('Documento02.docx');
+
+		header("Content-Disposition: attachment; filename=Documento02.docx; charset=iso-8859-1");
+		echo file_get_contents('Documento02.docx');        
+		exit();
+
+	}
+	
 	
 		
 
@@ -187,6 +229,37 @@
 					if (mysqli_query($conexion,$sql) AND mysqli_query($conexion,$sql2) AND mysqli_query($conexion,$sql3) ) {
 							genearExcel();
 																			
+					}else {
+						echo '<script type="text/javascript">alert("Error en la conexion");</script>';
+						echo '<script type="text/javascript">alert("error '. mysqli_error($conexion).'");</script>';
+					}
+				}else {
+						echo '<script type="text/javascript">alert("Error en la conexion");</script>';
+						echo '<script type="text/javascript">alert("error '. mysqli_error($conexion).'");</script>';
+					}
+				
+
+	}else if($elBoton == "generar"){
+		
+		$idProfCarrera = $_POST['idProfesional'];
+
+
+
+		 $hoy = "select CURDATE()";
+		   	$tiempo ="select curTime()";
+
+					 if ($resultHoy = mysqli_query($conexion,$hoy) AND $resultTime = mysqli_query($conexion,$tiempo)) {
+					 		$row = mysqli_fetch_row($resultHoy);
+					 		$row2 = mysqli_fetch_row($resultTime);
+					 }
+				
+
+					
+			$sql = "UPDATE fomope SET usuario_name = '$usuarioEdito', idProfesionalCarrera = '$idProfCarrera' WHERE id_movimiento = '$idFomope'" ;	
+				if (mysqli_query($conexion,$sql)) {
+					if (mysqli_query($conexion,$sql)) {
+						generarWord();
+															
 					}else {
 						echo '<script type="text/javascript">alert("Error en la conexion");</script>';
 						echo '<script type="text/javascript">alert("error '. mysqli_error($conexion).'");</script>';
