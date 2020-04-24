@@ -232,32 +232,9 @@ $(document).ready(function(){
 			            	btn_2.style.display = 'inline';
 			       	  }
 			}
-<<<<<<< HEAD
-=======
 
-			function verBoton(){
-					var a = $("#ofunid").val();
-				    var b = $("#fechaofi").val();
-				    var c = $("#fechareci").val();
-				    var d = $("#codigo").val();
-				    var e = $("#cod2_1").val();
-				    var f = $("#del2").val();
-				    var g = $("#MotivoRechazo").val();
-			  
-				    //var h = $("#TipoEntregaArchivo").val();
-				    
-				    if (a=="" || b=="" || c==""|| d==""|| e==""|| f==""|| g=="") {
-				      		return false;
-				      }else{
-				      	$('#capturaF').hide();
-			      		//$('#rechazo').hide();
-				      	var btn_2 = document.getElementById('bandejaEntrada');
-			            	btn_2.style.display = 'inline';
-			       	  }
-			}
-		</script>
->>>>>>> 306c903b27cf2306d2fd15d0559225a64a16b3e3
 
+			
 		</script>
 		
 		<script src="js/funciones.js"></script>
@@ -290,7 +267,7 @@ $(document).ready(function(){
 					
 			}
 			$sql = "SELECT id_mov, cod_mov, tipo_mov, area_mov FROM ct_movimientosrh";
-			$sql2 = "SELECT rfc, apellido_1,apellido_2, nombre, unidad, justificacionRechazo FROM fomope WHERE id_movimiento = '$noFomope'";
+			$sql2 = "SELECT rfc, apellido_1,apellido_2, nombre, unidad, justificacionRechazo FROM nombreUfomope WHERE id_movimiento = '$noFomope'";
 			if($result = mysqli_query($conexion,$sql2)){
 				$row = mysqli_fetch_row($result);
 

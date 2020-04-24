@@ -220,8 +220,10 @@
 
 			<?php 
 
-		}else{ 
+		}else if($nombreU[1] == 5){ 
 
+			header('Location:./consultaEstado.php?usuario_rol='.$usuarioSeguir);
+		}else{
 		 ?>
 	 <br>
 

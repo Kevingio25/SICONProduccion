@@ -86,6 +86,10 @@
 				});
 			});
 
+			function verDoc(nombre){
+				window.location.href = 'Controller/controllerDescarga.php?nombreDecarga='+nombre;
+			}
+
 
 
 		</script>
@@ -140,7 +144,7 @@
 					<table class="table table-hover table-white">
 						<?php 
 							include "configuracion.php";
-
+							$existenD =0;
 							$sql="SELECT * from fomope WHERE id_movimiento = '$noFomope' ";
 							$result=mysqli_query($conexion,$sql);
 							$ver = mysqli_fetch_row($result);
@@ -149,6 +153,7 @@
 									if($ver[$i] == ""){
 										
 									}else{
+										$existenD ++;
 										$sqlNombreDoc = "SELECT nombre_documento FROM m1ct_documentos WHERE documentos = '$ver[$i]'";
 										$resNombreDoc = mysqli_query($conexion,$sqlNombreDoc);
 										$rowNombreDoc = mysqli_fetch_row($resNombreDoc);
@@ -166,6 +171,17 @@
 												</td>
 										";	
 									}
+								}
+
+								if($existenD == 0){
+									echo('
+											<br>
+											<br>
+											<div class="col-sm-12 ">
+											<div class="plantilla-inputv text-dark ">
+											    <div class="card-body"><h2 align="center">No existen documentos adjuntos.</h2></div>
+										</div>
+										</div>');
 								}
 						 ?>
 
