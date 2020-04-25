@@ -19,7 +19,6 @@
 
 		  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js" integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy" crossorigin="anonymous"></script>
 
-		<script src="js/funciones.js"></script>
 
 		<script src="jquery/jquery-3.4.1.min.js" type="text/javascript"></script>
 		<script src="jquery/jquery-ui.min.js" type="text/javascript"></script>
@@ -201,8 +200,7 @@ $(document).ready(function(){
 					});
 				});
 			});
-
-
+			
 			function verDoc(nombre){
 				window.location.href = 'Controller/controllerDescarga.php?nombreDecarga='+nombre;
 			}
@@ -234,6 +232,8 @@ $(document).ready(function(){
 			            	btn_2.style.display = 'inline';
 			       	  }
 			}
+<<<<<<< HEAD
+=======
 
 			function verBoton(){
 					var a = $("#ofunid").val();
@@ -256,10 +256,14 @@ $(document).ready(function(){
 			       	  }
 			}
 		</script>
+>>>>>>> 306c903b27cf2306d2fd15d0559225a64a16b3e3
 
+		</script>
+		
+		<script src="js/funciones.js"></script>
 		
 	</head>
-	<body>
+	<body onload="nobackbutton();">
 
 <?php 
 
@@ -270,6 +274,8 @@ $(document).ready(function(){
 			//echo $id_rol;
 			$usuarioSeguir = $_GET['usuario'];
 			//echo $usuario;
+
+			
 
 			$sqlNombre = "SELECT nombrePersonal FROM usuarios WHERE usuario = '$usuarioSeguir'";
 			$result = mysqli_query($conexion,$sqlNombre);
