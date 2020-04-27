@@ -105,7 +105,23 @@
 	            <?php 
 	        }
 	           ?>
-	          
+	          <?php if($id_rol1 == 2 && $id_rol1 == 0 && $id_rol1 == 1 && $id_rol1 == 4) {
+
+
+	            	
+	           ?>
+	           <li class=" estilo-color">
+	            <a href=  <?php echo ("'./generarReportePC.php?usuario_rol=$usuarioSeguir'"); ?> ><img src="./img/icreport2.png" alt="x" height="17" width="20"/>Reporte Profesional</a>
+	          </li>
+	       <?php }else{
+
+	        		
+	            	
+	           ?>
+	            
+	            <?php 
+	        }
+	           ?>
 	         
 
 	          <li class=" estilo-color">
