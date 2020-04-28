@@ -69,14 +69,15 @@
 				}
 				//header ('Content-type: text/html; charset=utf-8');
 
-				$sqlUnidad = "SELECT unidad , rfc FROM fomope WHERE id_movimiento = '$idfom' ";
+				$sqlUnidad = "SELECT unidad , rfc , apellido_1, apellido_2, nombre FROM fomope WHERE id_movimiento = '$idfom' ";
 				if($resUni = mysqli_query($conexion, $sqlUnidad)){
 					$rowUni = mysqli_fetch_row($resUni);
 					$objPHPExcel->getActiveSheet()->setCellValue('H10',$fecha_recibido); 
-			        $objPHPExcel->getActiveSheet()->setCellValue('D12', $_POST['cod2_1']); 
-			        $objPHPExcel->getActiveSheet()->setCellValue('D16', $rowUni[0]); 
-			        $objPHPExcel->getActiveSheet()->setCellValue('D20', $motivoR);
-			        $objPHPExcel->getActiveSheet()->setCellValue('B29', $rowUser[4]); 
+			        $objPHPExcel->getActiveSheet()->setCellValue('D12', $rowUni[2]." ".$rowUni[3]." ".$rowUni[4]); 
+			        $objPHPExcel->getActiveSheet()->setCellValue('D14', $_POST['cod2_1']); 
+			        $objPHPExcel->getActiveSheet()->setCellValue('D18', $rowUni[0]); 
+			        $objPHPExcel->getActiveSheet()->setCellValue('D22', $motivoR);
+			        $objPHPExcel->getActiveSheet()->setCellValue('B31', $rowUser[4]); 
 
 				// Write the file
 			        $objWriter = PHPExcel_IOFactory::createWriter($objPHPExcel, $fileType);
